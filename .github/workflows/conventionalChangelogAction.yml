@@ -13,3 +13,4 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v3.4.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          skip-on-empty: false
