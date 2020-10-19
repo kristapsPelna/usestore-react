@@ -7,8 +7,7 @@ afterEach(() => {
 
 describe('useStore', () => {
   it('should warn when the store didnt exist and was created', () => {
-    const warn = jest.fn();
-    global.console = { warn };
+    const warn = jest.spyOn(global.console, 'warn');
     const name = 'test';
 
     renderHook(() => useStore(name));
