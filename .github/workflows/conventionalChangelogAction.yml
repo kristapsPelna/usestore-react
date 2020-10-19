@@ -1,3 +1,5 @@
+name: Conventional Changelog Action
+
 on:
   push:
     branches: [main]
@@ -8,8 +10,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.3
+      - name: Build
+        run: npm ci
+        run: npm deploy
       - name: Conventional Changelog Action
         uses: TriPSs/conventional-changelog-action@v3.4.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           preset: conventionalcommits
+      - name: npm publish
+        uses: JS-DevTools/npm-publish@v1
