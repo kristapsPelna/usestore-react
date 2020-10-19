@@ -1,0 +1,82 @@
+{
+  "name": "react-usestore",
+  "version": "0.9.0",
+  "description": "A state management library for react using the bleeding edge hooks feature",
+  "main": "./index.js",
+  "scripts": {
+    "test": "jest",
+    "coverage": "jest --coverage --watchAll=false",
+    "build": "tsc",
+    "clean": "rimraf dist && rimraf dist",
+    "pretty": "prettier \"src/**/*.{js,jsx,ts,tsx,json,css,md,html}\" --write",
+    "copy-files": "cp *.md dist && cp package.json dist",
+    "deploy": "npm run coverage && npm run clean && npm run build",
+    "deployAndDeploy": "npm run deploy && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kristapsPelna/react-usestore"
+  },
+  "bugs": {
+    "url": "https://github.com/kristapsPelna/react-usestore/issues",
+    "email": "kristaps.pelna@me.com"
+  },
+  "keywords": [
+    "react",
+    "state",
+    "redux",
+    "state",
+    "state management",
+    "hook",
+    "store",
+    "hooks",
+    "react hooks"
+  ],
+  "author": "kristaps.pelna.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-stage-0": "^7.8.3",
+    "@babel/preset-typescript": "^7.10.4",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@testing-library/react": "^11.0.4",
+    "@testing-library/react-hooks": "^3.4.2",
+    "@types/jest": "^22.2.3",
+    "@types/react": "^16.8.24",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^25.0.0",
+    "babel-loader": "^8.1.0",
+    "jest": "^26.4.2",
+    "prettier": "2.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
+    "rimraf": "3.0.0",
+    "standard-version": "^9.0.0",
+    "typescript": "^3.4.3"
+  },
+  "peerDependencies": {
+    "react": "^16.13.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run coverage",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,md,html}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "files": [
+    "dist",
+    "src"
+  ]
+}
