@@ -1,6 +1,6 @@
 # React Hook Store
 
-[![npm version](https://badge.fury.io/js/react-UseStore.svg)](https://badge.fury.io/js/react-usestore) [![Build Status](https://travis-ci.org/jhonnymichel/react-UseStore.svg?branch=master)](https://travis-ci.org/jhonnymichel/react-UseStore) [![Coverage Status](https://coveralls.io/repos/github/jhonnymichel/react-UseStore/badge.svg?branch=master)](https://coveralls.io/github/jhonnymichel/react-UseStore?branch=master)
+[![npm version](https://badge.fury.io/js/react-usestore.svg)](https://badge.fury.io/js/react-usestore)
 
 A very simple and small (1k gzipped!) state management lib for React that uses the bleeding edge React's `useState` hook.
 Which basically means no magic behind the curtains, only pure react APIs being used to share state across components.
