@@ -4,8 +4,8 @@
   "description": "A state management library for react using the bleeding edge hooks feature",
   "main": "./dist/index.js",
   "scripts": {
-    "test": "jest",
-    "coverage": "jest --coverage --watchAll=false",
+    "test": "jest src",
+    "coverage": "npm run test -- --coverage --watchAll=false",
     "build": "tsc",
     "clean": "rimraf dist && rimraf dist",
     "pretty": "prettier \"src/**/*.{js,jsx,ts,tsx,json,css,md,html}\" --write",
