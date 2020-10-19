@@ -1,5 +1,3 @@
-name: Conventional Changelog Action
-
 on:
   push:
     branches: [main]
@@ -11,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: TriPSs/conventional-changelog-action@v3.4.0
-      - with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Conventional Changelog Action
+        uses: TriPSs/conventional-changelog-action@v3.4.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
