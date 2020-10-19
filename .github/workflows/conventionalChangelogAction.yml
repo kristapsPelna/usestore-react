@@ -17,5 +17,3 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           preset: conventionalcommits
-      - name: npm publish
-        uses: JS-DevTools/npm-publish@v1
