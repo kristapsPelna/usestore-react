@@ -1,3 +1,10 @@
+## [0.12.0](https://github.com/kristapsPelna/react-usestore/compare/v0.11.0...v0.12.0) (2020-10-19)
+
+
+### Features
+
+* fix release action ([04c6498](https://github.com/kristapsPelna/react-usestore/commit/04c6498f519bce49a8daa0bbbc788c17d66e5d9d))
+
 ## [0.11.0](https://github.com/kristapsPelna/react-usestore/compare/v0.10.2...v0.11.0) (2020-10-19)
 
 
