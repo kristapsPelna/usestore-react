@@ -1,0 +1,56 @@
+- name: Conventional Changelog Action
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: TriPSs/conventional-changelog-action@v3.4.0
+      - with:
+        # Github token
+        github-token: 
+        # Commit message to use
+        git-message: # optional, default is chore(release): {version}
+        # The git user.name to use for the commit
+        git-user-name: # optional, default is Conventional Changelog Action
+        # The git user.email to use for the commit
+        git-user-email: # optional, default is conventional.changelog.action@github.com
+        # The git pull method used when pulling all changes from remote
+        git-pull-method: # optional, default is --ff-only
+        # The preset from Conventional Changelog to use
+        preset: # optional, default is angular
+        # Prefix that is used for the git tag
+        tag-prefix: # optional, default is v
+        # File to output the changelog to
+        output-file: # optional, default is CHANGELOG.md
+        # Number of releases to preserve in changelog
+        release-count: # optional, default is 5
+        # The path to the file that contains the version to bump (supports comma-separated list of file paths)
+        version-file: # optional, default is ./package.json
+        # The place inside the version file to bump
+        version-path: # optional, default is version
+        # Do nothing when the changelog from the latest release is empty
+        skip-on-empty: # optional, default is true
+        # Do not update the version file
+        skip-version-file: # optional, default is false
+        # Do create a release commit
+        skip-commit: # optional, default is false
+        # Path to the pre-commit script file
+        pre-commit: # optional
+        # The fallback version, if no older one can be detected, or if it is the first one
+        fallback-version: # optional, default is 0.1.0
+        # Path to the conventional changelog config file. If set, the preset setting will be ignored
+        config-file-path: # optional
