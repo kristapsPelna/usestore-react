@@ -1,6 +1,6 @@
 {
   "name": "react-usestore",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "A state management library for react using the bleeding edge hooks feature",
   "main": "./dist/index.js",
   "scripts": {
