@@ -1,4 +1,9 @@
-# Change Log
+# 0.10.0 (2020-10-19)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### Features
+
+* initial version ([1d3ed77](https://github.com/kristapsPelna/react-usestore/commit/1d3ed77d96ef5b3c39727aa78fd94a340a0ee44d))
+
+
+
