@@ -1,3 +1,10 @@
+### [0.18.1](https://github.com/kristapsPelna/usestore-react/compare/v0.18.0...v0.18.1) (2020-10-20)
+
+
+### Bug Fixes
+
+* add more badges ([df962c3](https://github.com/kristapsPelna/usestore-react/commit/df962c3b1bd48da96fe872209d90c1b758c76f4b))
+
 ## [0.18.0](https://github.com/kristapsPelna/usestore-react/compare/v0.17.0...v0.18.0) (2020-10-20)
 
 
