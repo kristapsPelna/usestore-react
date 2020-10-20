@@ -35,7 +35,7 @@ import { createStore, useStore } from 'usestore-react';
 createStore('timesClicked', 0);
 
 const StatefullHello = () => {
-  // just use the useStore method to grab the state and the setState methods
+  // just use the useStore method to grab the state and the setState
   const [timesClicked, setClicks] = useStore('timesClicked');
 
   return (
