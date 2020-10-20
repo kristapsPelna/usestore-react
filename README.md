@@ -38,13 +38,13 @@ createStore('timesClicked', 0);
 
 const StatefullHello = () => {
   // just use the useStore method to grab the state and the setState
-  const [timesClicked, setClicks] = useStore('timesClicked');
+  const [timesClicked, setTimesClicked] = useStore('timesClicked');
 
   return (
     <div>
       <h1>Hello, component!</h1>
       <h2>The button was clicked {timesClicked} times</h2>
-      <button onClick={() => timesClicked + 1}>Update</button>
+      <button onClick={() => setTimesClicked(timesClicked + 1)}>Update</button>
     </div>
   );
 };

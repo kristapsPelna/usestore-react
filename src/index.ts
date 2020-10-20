@@ -68,11 +68,8 @@ export const useStore = <TState>(name: string): [TState, SetState<TState>] => {
   const store = getStore<TState>(name);
   const [state, setState] = useState(store.state);
 
-  if (!store.setters.includes(setState)) {
-    store.setters.unshift(setState);
-  }
-
   useEffect(() => {
+    store.setters.unshift(setState);
     return () => {
       store.setters = store.setters.filter((setter) => setter !== setState);
     };
