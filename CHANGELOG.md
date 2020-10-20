@@ -1,3 +1,10 @@
+## [0.16.0](https://github.com/kristapsPelna/usestore-react/compare/v0.15.0...v0.16.0) (2020-10-20)
+
+
+### Features
+
+* update readme and trigger publish ([f849dc4](https://github.com/kristapsPelna/usestore-react/commit/f849dc49a9241e77ff8a69569688196f1c16c12c))
+
 ## [0.15.0](https://github.com/kristapsPelna/usestore-react/compare/v0.14.0...v0.15.0) (2020-10-20)
 
 
