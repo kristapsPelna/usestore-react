@@ -2,7 +2,7 @@
   "name": "usestore-react",
   "version": "0.18.2",
   "description": "A state management library for react using the bleeding edge hooks feature",
-  "main": "./index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "test": "jest src",
     "coverage": "npm run test -- --coverage --watchAll=false",
