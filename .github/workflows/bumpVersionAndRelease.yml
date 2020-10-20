@@ -19,5 +19,6 @@ jobs:
           preset: conventionalcommits
       - name: npm publish
         uses: JS-DevTools/npm-publish@v1
+        run: cd dist
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
