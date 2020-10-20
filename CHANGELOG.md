@@ -1,3 +1,10 @@
+### [0.18.3](https://github.com/kristapsPelna/usestore-react/compare/v0.18.2...v0.18.3) (2020-10-20)
+
+
+### Bug Fixes
+
+* try the other publish action again ([c416dca](https://github.com/kristapsPelna/usestore-react/commit/c416dca25248f12eaff9553c9ba731d83287d460))
+
 ### [0.18.2](https://github.com/kristapsPelna/usestore-react/compare/v0.18.1...v0.18.2) (2020-10-20)
 
 
