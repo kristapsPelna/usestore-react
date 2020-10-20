@@ -1,4 +1,4 @@
-name: Conventional Changelog Action
+name: Bump version and release
 
 on:
   push:
@@ -17,3 +17,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           preset: conventionalcommits
+      - name: npm publish
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
