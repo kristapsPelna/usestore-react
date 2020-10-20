@@ -1,3 +1,10 @@
+## [0.17.0](https://github.com/kristapsPelna/usestore-react/compare/v0.16.0...v0.17.0) (2020-10-20)
+
+
+### Features
+
+* try tu publish the correct workspace ([af5d1d0](https://github.com/kristapsPelna/usestore-react/commit/af5d1d0d9e65415f9104a4e4ef0d7a1155a1c2d0))
+
 ## [0.16.0](https://github.com/kristapsPelna/usestore-react/compare/v0.15.0...v0.16.0) (2020-10-20)
 
 
