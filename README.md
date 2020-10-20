@@ -1,7 +1,7 @@
 # useStore for React
 
 [![npm version](https://badge.fury.io/js/usestore-react.svg)](https://badge.fury.io/js/usestore-react)
-[![minzip size](https://badgen.net/bundlephobia/minzip/usestore-react)](https://badgen.net/bundlephobia/minzip/usestore-react)
+[![minzip size](https://badgen.net/bundlephobia/minzip/usestore-react)](https://bundlephobia.com/result?p=usestore-react)
 [![dependencies](https://badgen.net/bundlephobia/dependency-count/usestore-react)](https://badgen.net/bundlephobia/dependency-count/usestore-react)
 
 A simple and small state management lib for React that uses the bleeding edge React's `useState` hook.
