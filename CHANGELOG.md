@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/kristapsPelna/usestore-react/compare/v1.0.1...v1.1.0) (2020-10-20)
+
+
+### Features
+
+* change module type to commonJs ([a51d57c](https://github.com/kristapsPelna/usestore-react/commit/a51d57c05ea1d694c8ca297fa31d5b1971a79f38))
+
 ### [1.0.1](https://github.com/kristapsPelna/usestore-react/compare/v1.0.0...v1.0.1) (2020-10-20)
 
 
