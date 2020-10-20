@@ -34,7 +34,7 @@ import { createStore, useStore } from 'usestore-react';
 
 createStore('timesClicked', 0);
 
-function StatefullHello() {
+const StatefullHello = () => {
   // just use the useStore method to grab the state and the setState methods
   const [timesClicked, setClicks] = useStore('timesClicked');
 
@@ -45,9 +45,9 @@ function StatefullHello() {
       <button onClick={() => timesClicked + 1}>Update</button>
     </div>
   );
-}
+};
 
-function AnotherComponent() {
+const AnotherComponent = () => {
   const [timesClicked] = useStore('timesClicked');
   return (
     <div>
@@ -61,7 +61,7 @@ function AnotherComponent() {
       </h2>
     </div>
   );
-}
+};
 ```
 
 ### <a name="usage_namespace">Referencing stores</a>
