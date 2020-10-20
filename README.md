@@ -1,11 +1,11 @@
 # React Hook Store
 
-[![npm version](https://badge.fury.io/js/react-usestore.svg)](https://badge.fury.io/js/react-usestore)
+[![npm version](https://badge.fury.io/js/usestore-react.svg)](https://badge.fury.io/js/usestore-react)
 
 A very simple and small (1k gzipped!) state management lib for React that uses the bleeding edge React's `useState` hook.
 Which basically means no magic behind the curtains, only pure react APIs being used to share state across components.
 
-Try it on [Codesandbox!](https://codesandbox.io/s/react-usestore-demo-efw6z)
+Try it on [Codesandbox!](https://codesandbox.io/s/usestore-react-demo-efw6z)
 
 # Table of Contents
 
@@ -14,11 +14,11 @@ Try it on [Codesandbox!](https://codesandbox.io/s/react-usestore-demo-efw6z)
   - [Basic](#usage_basic)
   - [Referencing stores](#usage_namespace)
   - [Reducer powered stores](#usage_reducer)
-  - [More examples](https://codesandbox.io/s/react-usestore-demo-efw6z)
+  - [More examples](https://codesandbox.io/s/usestore-react-demo-efw6z)
 
 ## <a name="installation">Installation</a>
 
-`npm i react-usestore --save`
+`npm i usestore-react --save`
 
 ## <a name="usage">Usage</a>
 
@@ -30,7 +30,7 @@ The value passed as the first argument to the setState method will be the new st
 
 ```javascript
 import React from 'react';
-import { createStore, useStore } from 'react-usestore';
+import { createStore, useStore } from 'usestore-react';
 
 createStore('timesClicked', 0);
 
@@ -71,7 +71,7 @@ Stores can be referenced by using their name.
 
 ```javascript
 import React from 'react';
-import { createStore, useStore } from 'react-usestore';
+import { createStore, useStore } from 'usestore-react';
 
 const clickCount = createStore('clickCount', 0);
 createStore('name', 'John Doe');
@@ -96,4 +96,4 @@ const StatefullHello = () => {
 
 ### More examples
 
-Check out the [Codesandbox demo!](https://codesandbox.io/s/react-usestore-demo-efw6z)
+Check out the [Codesandbox demo!](https://codesandbox.io/s/usestore-react-demo-efw6z)

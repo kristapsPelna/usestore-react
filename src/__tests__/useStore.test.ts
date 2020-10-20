@@ -13,7 +13,7 @@ describe('useStore', () => {
     renderHook(() => useStore(name));
 
     expect(warn).toBeCalledWith(
-      `[react-usestore] Store named "${name}" does not exist. Creating one`,
+      `[usestore-react] Store named "${name}" does not exist. Creating one`,
     );
   });
 

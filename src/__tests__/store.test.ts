@@ -27,7 +27,7 @@ describe('createStore', () => {
     expect(store).toBeTruthy();
     createStore(name, undefined);
     expect(warn).toHaveBeenCalledWith(
-      `[react-usestore] Store with name ${name} already exists. Overriding`,
+      `[usestore-react] Store with name ${name} already exists. Overriding`,
     );
   });
 });
@@ -58,7 +58,7 @@ describe('getStore', () => {
     const store = getStore(name);
     expect(store.name).toEqual(name);
     expect(warn).toBeCalledWith(
-      `[react-usestore] Store named "${name}" does not exist. Creating one`,
+      `[usestore-react] Store named "${name}" does not exist. Creating one`,
     );
   });
 });

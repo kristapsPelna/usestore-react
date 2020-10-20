@@ -1,5 +1,5 @@
 {
-  "name": "react-usestore",
+  "name": "usestore-react",
   "version": "0.14.0",
   "description": "A state management library for react using the bleeding edge hooks feature",
   "main": "./dist/index.js",
@@ -14,10 +14,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kristapsPelna/react-usestore"
+    "url": "https://github.com/kristapsPelna/usestore-react"
   },
   "bugs": {
-    "url": "https://github.com/kristapsPelna/react-usestore/issues",
+    "url": "https://github.com/kristapsPelna/usestore-react/issues",
     "email": "kristaps.pelna@me.com"
   },
   "keywords": [
@@ -73,8 +73,5 @@
       "git add"
     ]
   },
-  "files": [
-    "dist",
-    "src"
-  ]
+  "files": ["dist"]
 }

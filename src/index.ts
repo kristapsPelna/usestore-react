@@ -24,7 +24,7 @@ export const createStore = <TState>(
 ): Store<TState> => {
   if (stores[name]) {
     console.warn(
-      `[react-usestore] Store with name ${name} already exists. Overriding`,
+      `[usestore-react] Store with name ${name} already exists. Overriding`,
     );
   }
 
@@ -49,7 +49,7 @@ export const createStore = <TState>(
 export const getStore = <TState>(name: string): InternalStore<TState> => {
   if (!stores[name]) {
     console.warn(
-      `[react-usestore] Store named "${name}" does not exist. Creating one`,
+      `[usestore-react] Store named "${name}" does not exist. Creating one`,
     );
     createStore(name, undefined);
   }
