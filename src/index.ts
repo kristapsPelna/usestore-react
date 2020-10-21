@@ -66,7 +66,8 @@ export const deleteAllStores = () => Object.keys(stores).forEach(deleteStore);
 
 export const useStore = <TState>(name: string): [TState, SetState<TState>] => {
   const store = getStore<TState>(name);
-  const [state, setState] = useState(store.state);
+  // setState is only used for rerenders because we always want to serve the latest state from the store
+  const [, setState] = useState(store.state);
 
   useEffect(() => {
     store.setters.unshift(setState);
@@ -75,5 +76,5 @@ export const useStore = <TState>(name: string): [TState, SetState<TState>] => {
     };
   }, []);
 
-  return [state, store.setState];
+  return [store.state, store.setState];
 };
