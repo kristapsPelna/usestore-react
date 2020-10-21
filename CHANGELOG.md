@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/kristapsPelna/usestore-react/compare/v1.1.0...v1.2.0) (2020-10-21)
+
+
+### Features
+
+* return store.state directly instead of the useState value to always return the latest value without a delay (can happen in rare cases) ([c372d0b](https://github.com/kristapsPelna/usestore-react/commit/c372d0b9251519d234852dec665acb1b92db5a16))
+
 ## [1.1.0](https://github.com/kristapsPelna/usestore-react/compare/v1.0.1...v1.1.0) (2020-10-20)
 
 
