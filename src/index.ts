@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 
 const stores: Record<string, InternalStore<any>> = {};
 
@@ -69,7 +69,7 @@ export const useStore = <TState>(name: string): [TState, SetState<TState>] => {
   // setState is only used for rerenders because we always want to serve the latest state from the store
   const [, setState] = useState(store.state);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     store.setters.unshift(setState);
     return () => {
       store.setters = store.setters.filter((setter) => setter !== setState);
