@@ -1,3 +1,10 @@
+### [1.2.1](https://github.com/kristapsPelna/usestore-react/compare/v1.2.0...v1.2.1) (2020-10-22)
+
+
+### Bug Fixes
+
+* use useLayoutEffect instead of useEffect to have the subscribe happen immediately instead of asynchronously ([e601034](https://github.com/kristapsPelna/usestore-react/commit/e601034ff8068007915cf9fb492b49dd937401e4))
+
 ## [1.2.0](https://github.com/kristapsPelna/usestore-react/compare/v1.1.0...v1.2.0) (2020-10-21)
 
 
