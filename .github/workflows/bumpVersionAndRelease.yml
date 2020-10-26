@@ -17,8 +17,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Stash uncommitted changelog files (if skipped)
-        uses: srt32/git-actions@v0.0.3
-        args: 'git stash'
+        run: git stash
       - name: npm publish
         uses: JS-DevTools/npm-publish@v1
         with:
