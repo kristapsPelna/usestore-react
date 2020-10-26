@@ -48,7 +48,7 @@ export const createStore = <TState>(
 
 export const getStore = <TState>(name: string): InternalStore<TState> => {
   if (!stores[name]) {
-    console.warn(
+    console.debug(
       `[usestore-react] Store named "${name}" does not exist. Creating one`,
     );
     createStore(name, undefined);

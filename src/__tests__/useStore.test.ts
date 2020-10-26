@@ -6,13 +6,13 @@ afterEach(() => {
 });
 
 describe('useStore', () => {
-  it('should warn when the store didnt exist and was created', () => {
-    const warn = jest.spyOn(global.console, 'warn');
+  it('should add a debug message when the store didnt exist and was created', () => {
+    const debug = jest.spyOn(global.console, 'debug');
     const name = 'test';
 
     renderHook(() => useStore(name));
 
-    expect(warn).toBeCalledWith(
+    expect(debug).toBeCalledWith(
       `[usestore-react] Store named "${name}" does not exist. Creating one`,
     );
   });

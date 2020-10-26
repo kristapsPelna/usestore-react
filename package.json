@@ -63,6 +63,16 @@
   "peerDependencies": {
     "react": "^16.13.0"
   },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",

@@ -54,10 +54,10 @@ describe('getStore', () => {
 
   it('should return a new store if it does not exist', () => {
     const name = 'Non-existent store';
-    const warn = jest.spyOn(global.console, 'warn');
+    const debug = jest.spyOn(global.console, 'debug');
     const store = getStore(name);
     expect(store.name).toEqual(name);
-    expect(warn).toBeCalledWith(
+    expect(debug).toBeCalledWith(
       `[usestore-react] Store named "${name}" does not exist. Creating one`,
     );
   });
