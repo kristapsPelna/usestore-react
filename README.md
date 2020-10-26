@@ -15,7 +15,6 @@ Try it on [Codesandbox!](https://codesandbox.io/s/usestore-react-demo-efw6z)
 - Usage
   - [Basic](#usage_basic)
   - [Referencing stores](#usage_namespace)
-  - [Reducer powered stores](#usage_reducer)
   - [More examples](https://codesandbox.io/s/usestore-react-demo-efw6z)
 
 ## <a name="installation">Installation</a>
@@ -83,8 +82,7 @@ clickCount.setState(2);
 
 const StatefullHello = () => {
   const [clicks, setClicks] = useStore('clickCount');
-  // this line will reference a store by its name
-  const [name] = useStore('nameStore');
+  const [name] = useStore('name');
 
   return (
     <div>
