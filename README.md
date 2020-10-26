@@ -14,7 +14,7 @@ Try it on [Codesandbox!](https://codesandbox.io/s/usestore-react-demo-efw6z)
 - [Installation](#installation)
 - Usage
   - [Basic](#usage_basic)
-  - [Referencing stores](#usage_namespace)
+  - [Referencing stores](#usage_name)
   - [More examples](https://codesandbox.io/s/usestore-react-demo-efw6z)
 
 ## <a name="installation">Installation</a>
@@ -65,7 +65,7 @@ const AnotherComponent = () => {
 };
 ```
 
-### <a name="usage_namespace">Referencing stores</a>
+### <a name="usage_name">Referencing stores</a>
 
 It is possible to create multiple stores in an app.
 Stores can be referenced by using their name.
