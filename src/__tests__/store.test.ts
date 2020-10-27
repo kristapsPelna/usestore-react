@@ -99,23 +99,28 @@ describe('store', () => {
   test('setState must update store state', () => {
     const store = createStore('store3', 0);
     expect(store.getState()).toBe(0);
-    store.setState(1);
+    expect(store.setState(1)).toBe(1);
     expect(store.getState()).toBe(1);
-    store.setState(999);
+    expect(store.setState(999)).toBe(999);
     expect(store.getState()).toEqual(999);
   });
 
-  test('setState callback must be called', () => {
-    const store = createStore('store7', 'foo');
-    store.setState('bar', (newState) => {
-      expect(newState).toBe('bar');
-    });
-  });
-
-  test('setState callback must return the new state', () => {
-    const callback = jest.fn();
-    const store = createStore('store8', 0);
-    store.setState(10, callback);
-    expect(callback).toHaveBeenCalled();
+  test('setState as a function must also update store state', () => {
+    const store = createStore('store3', 0);
+    expect(store.getState()).toBe(0);
+    expect(
+      store.setState((prevState) => {
+        expect(prevState).toBe(0);
+        return 1;
+      }),
+    ).toBe(1);
+    expect(store.getState()).toBe(1);
+    expect(
+      store.setState((prevState) => {
+        expect(prevState).toBe(1);
+        return 999;
+      }),
+    ).toBe(999);
+    expect(store.getState()).toEqual(999);
   });
 });

@@ -2,10 +2,8 @@ import { useState, useLayoutEffect } from 'react';
 
 const stores: Record<string, InternalStore<any>> = {};
 
-type SetState<TState> = (
-  state: TState,
-  callback?: (state: TState) => void,
-) => void;
+type StateUpdateFn<TState> = (prevState: TState) => TState;
+type SetState<TState> = (state: TState | StateUpdateFn<TState>) => void;
 
 export interface Store<TState> {
   readonly name: string;
@@ -33,12 +31,13 @@ export const createStore = <TState>(
     state: defaultState,
     setters: [],
     getState: () => store.state,
-    setState: (newState: TState, callback?: (state: TState) => void) => {
-      store.state = newState;
+    setState: (newStateOrUpdateFn: TState | StateUpdateFn<TState>) => {
+      store.state =
+        typeof newStateOrUpdateFn === 'function'
+          ? (newStateOrUpdateFn as StateUpdateFn<TState>)(store.state)
+          : newStateOrUpdateFn;
+
       store.setters.forEach((setter) => setter(store.state));
-      if (typeof callback === 'function') {
-        callback(store.state);
-      }
       return store.state;
     },
   };

@@ -29,26 +29,32 @@ This is the most basic implementation of the library. create a store with its in
 Later, call `useStore` inside components to retrieve its state and setState method.
 The value passed as the first argument to the setState method will be the new state.
 
-```javascript
+```ts
 import React from 'react';
 import { createStore, useStore } from 'usestore-react';
 
-createStore('timesClicked', 0);
+const clickCountStore = createStore('clickCount', 0);
 
-const StatefullHello = () => {
+const FirstComponent = () => {
   // just use the useStore method to grab the state and the setState
-  const [timesClicked, setTimesClicked] = useStore('timesClicked');
+  const [clickCount, setClickCount] = useStore('clickCount');
 
   return (
     <div>
       <h1>Hello, component!</h1>
-      <h2>The button was clicked {timesClicked} times</h2>
-      <button onClick={() => setTimesClicked(timesClicked + 1)}>Update</button>
+      <h2>The button was clicked {clickCount} times</h2>
+      <button onClick={() => setTimesClicked(clickCount + 1)}>Increment</button>
+      OR
+      <button
+        onClick={() => setTimesClicked((prevClickCount) => prevClickCount + 1)}
+      >
+        Increment
+      </button>
     </div>
   );
 };
 
-const AnotherComponent = () => {
+const SecondComponent = () => {
   const [timesClicked] = useStore('timesClicked');
   return (
     <div>
@@ -63,6 +69,21 @@ const AnotherComponent = () => {
     </div>
   );
 };
+
+const ThirdComponent = () => (
+  <div>
+    <h1>
+      Hello, this is a second component, with no relation to the one on the top
+    </h1>
+    <button
+      onClick={() =>
+        clickCountStore.setState((prevClickCount) => prevClickCount + 1)
+      }
+    >
+      Increment
+    </button>
+  </div>
+);
 ```
 
 ### <a name="usage_name">Referencing stores</a>
@@ -70,7 +91,7 @@ const AnotherComponent = () => {
 It is possible to create multiple stores in an app.
 Stores can be referenced by using their name.
 
-```javascript
+```ts
 import React from 'react';
 import { createStore, useStore } from 'usestore-react';
 
