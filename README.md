@@ -41,12 +41,12 @@ const FirstComponent = () => {
 
   return (
     <div>
-      <h1>Hello, component!</h1>
+      <h1>First component</h1>
       <h2>The button was clicked {clickCount} times</h2>
-      <button onClick={() => setTimesClicked(clickCount + 1)}>Increment</button>
+      <button onClick={() => setClickCount(clickCount + 1)}>Increment</button>
       OR
       <button
-        onClick={() => setTimesClicked((prevClickCount) => prevClickCount + 1)}
+        onClick={() => setClickCount((prevClickCount) => prevClickCount + 1)}
       >
         Increment
       </button>
@@ -55,16 +55,13 @@ const FirstComponent = () => {
 };
 
 const SecondComponent = () => {
-  const [timesClicked] = useStore('timesClicked');
+  const [clickCount] = useStore('clickCount');
   return (
     <div>
-      <h1>
-        Hello, this is a second component, with no relation to the one on the
-        top
-      </h1>
+      <h1>Second component</h1>
       <h2>
-        But it is still aware of how many times the button was clicked:{' '}
-        {timesClicked}
+        Totally separate from the others, but it is still aware of the same
+        state. clickCount: {clickCount}
       </h2>
     </div>
   );
@@ -72,9 +69,11 @@ const SecondComponent = () => {
 
 const ThirdComponent = () => (
   <div>
-    <h1>
-      Hello, this is a second component, with no relation to the one on the top
-    </h1>
+    <h1>Third Component</h1>
+    <h2>
+      Totally separate but can also update the state. Either by direct reference
+      to the store or by using the hook
+    </h2>
     <button
       onClick={() =>
         clickCountStore.setState((prevClickCount) => prevClickCount + 1)
@@ -102,14 +101,14 @@ createStore('name', 'John Doe');
 clickCount.setState(2);
 
 const StatefullHello = () => {
-  const [clicks, setClicks] = useStore('clickCount');
+  const [clickCount, setClickCount] = useStore('clickCount');
   const [name] = useStore('name');
 
   return (
     <div>
       <h1>Hello, {name}!</h1>
-      <h2>The button was clicked {clicks} times</h2>
-      <button onClick={() => setClicks(clicks + 1)}>Update</button>
+      <h2>The button was clicked {clickCount} times</h2>
+      <button onClick={() => setClickCount(clickCount + 1)}>Update</button>
     </div>
   );
 };
