@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/kristapsPelna/usestore-react/compare/v1.3.0...v1.4.0) (2020-11-03)
+
+
+### Features
+
+* add createStore array return as well as an object return ([a5c5828](https://github.com/kristapsPelna/usestore-react/commit/a5c5828bc0ad92668b3c2e5f61661cf302042642))
+
+
+
 # [1.3.0](https://github.com/kristapsPelna/usestore-react/compare/v1.2.1...v1.3.0) (2020-10-27)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * change module type to commonJs ([a51d57c](https://github.com/kristapsPelna/usestore-react/commit/a51d57c05ea1d694c8ca297fa31d5b1971a79f38))
-
-
-
-## [1.0.1](https://github.com/kristapsPelna/usestore-react/compare/v1.0.0...v1.0.1) (2020-10-20)
-
-
-### Bug Fixes
-
-* optimize useStore and update readme ([1b53bb0](https://github.com/kristapsPelna/usestore-react/commit/1b53bb0d9a332f02cabe0da6a88552d530743a73))
 
 
 
