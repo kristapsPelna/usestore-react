@@ -94,11 +94,16 @@ Stores can be referenced by using their name.
 import React from 'react';
 import { createStore, useStore } from 'usestore-react';
 
+// The return can be used as an object
 const clickCount = createStore('clickCount', 0);
-createStore('name', 'John Doe');
-
 // counter will start at 2
 clickCount.setState(2);
+
+// Or it can be used as an array
+const [getName, setName] = createStore('name', 'John Doe');
+
+// name will start with 'Jane Doe'
+setName('Jane Doe');
 
 const StatefullHello = () => {
   const [clickCount, setClickCount] = useStore('clickCount');

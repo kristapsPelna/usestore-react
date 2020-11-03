@@ -5,21 +5,18 @@ const stores: Record<string, InternalStore<any>> = {};
 type StateUpdateFn<TState> = (prevState: TState) => TState;
 type SetState<TState> = (state: TState | StateUpdateFn<TState>) => void;
 
-export interface Store<TState> {
+export type Store<TState> = {
   readonly name: string;
-  getState(): TState;
+  getState: () => TState;
   setState: SetState<TState>;
-}
+};
 
-export interface InternalStore<TState> extends Store<TState> {
+export type InternalStore<TState> = Store<TState> & {
   state: TState;
   setters: SetState<TState>[];
-}
+};
 
-export const createStore = <TState>(
-  name: string,
-  defaultState: TState,
-): Store<TState> => {
+export const createStore = <TState>(name: string, defaultState: TState) => {
   if (stores[name]) {
     console.warn(
       `[usestore-react] Store with name ${name} already exists. Overriding`,
@@ -42,7 +39,12 @@ export const createStore = <TState>(
     },
   };
   stores[name] = store;
-  return { name, getState: store.getState, setState: store.setState };
+  const returnValue: any = [store.getState, store.setState];
+  returnValue.name = name;
+  returnValue.getState = store.getState;
+  returnValue.setState = store.setState;
+  return returnValue as [Store<TState>['getState'], Store<TState>['setState']] &
+    Store<TState>;
 };
 
 export const getStore = <TState>(name: string): InternalStore<TState> => {

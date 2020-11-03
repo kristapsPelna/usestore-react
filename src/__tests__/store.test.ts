@@ -12,10 +12,15 @@ afterEach(() => {
 });
 
 describe('createStore', () => {
+  it('should create a store and return an array for destructuring', () => {
+    const [getState, setState] = createStore('store1', 0);
+    expect(getState()).toBe(0);
+    expect(typeof setState).toBe('function');
+  });
+
   it('should create a store and return its public interface', () => {
     const store = createStore('store1', 0);
     expect(store.name).toBe('store1');
-    expect(Object.keys(store)).toEqual(['name', 'getState', 'setState']);
     expect(store.getState()).toBe(0);
     expect(typeof store.setState).toBe('function');
   });
