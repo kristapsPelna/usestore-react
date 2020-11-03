@@ -1,3 +1,12 @@
+# [1.5.0](https://github.com/kristapsPelna/usestore-react/compare/v1.4.0...v1.5.0) (2020-11-03)
+
+
+### Features
+
+* add a scoped useStore ([8498294](https://github.com/kristapsPelna/usestore-react/commit/8498294032115e35bef160f976016337981a2299))
+
+
+
 # [1.4.0](https://github.com/kristapsPelna/usestore-react/compare/v1.3.0...v1.4.0) (2020-11-03)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * return store.state directly instead of the useState value to always return the latest value without a delay (can happen in rare cases) ([c372d0b](https://github.com/kristapsPelna/usestore-react/commit/c372d0b9251519d234852dec665acb1b92db5a16))
-
-
-
-# [1.1.0](https://github.com/kristapsPelna/usestore-react/compare/v1.0.1...v1.1.0) (2020-10-20)
-
-
-### Features
-
-* change module type to commonJs ([a51d57c](https://github.com/kristapsPelna/usestore-react/commit/a51d57c05ea1d694c8ca297fa31d5b1971a79f38))
 
 
 
