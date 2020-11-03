@@ -9,6 +9,7 @@ export type Store<TState> = {
   readonly name: string;
   getState: () => TState;
   setState: SetState<TState>;
+  useStore: () => [TState, SetState<TState>];
 };
 
 export type InternalStore<TState> = Store<TState> & {
@@ -37,12 +38,14 @@ export const createStore = <TState>(name: string, defaultState: TState) => {
       store.setters.forEach((setter) => setter(store.state));
       return store.state;
     },
+    useStore: () => useStore(name),
   };
   stores[name] = store;
   const returnValue: any = [store.getState, store.setState];
   returnValue.name = name;
   returnValue.getState = store.getState;
   returnValue.setState = store.setState;
+  returnValue.useStore = store.useStore;
   return returnValue as [Store<TState>['getState'], Store<TState>['setState']] &
     Store<TState>;
 };

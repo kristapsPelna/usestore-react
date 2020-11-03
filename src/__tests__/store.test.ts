@@ -1,3 +1,4 @@
+import { renderHook, act } from '@testing-library/react-hooks';
 import {
   createStore,
   getStore,
@@ -23,6 +24,7 @@ describe('createStore', () => {
     expect(store.name).toBe('store1');
     expect(store.getState()).toBe(0);
     expect(typeof store.setState).toBe('function');
+    expect(typeof store.useStore).toBe('function');
   });
 
   it('should warn about overriding an existing store', () => {
@@ -49,11 +51,13 @@ describe('getStore', () => {
       'setters',
       'getState',
       'setState',
+      'useStore',
     ]);
     expect(store.name).toBe('test');
     expect(store.state).toEqual(defaultValue);
     expect(store.getState()).toEqual(defaultValue);
     expect(typeof store.setState).toBe('function');
+    expect(typeof store.useStore).toBe('function');
     expect(store.setters).toEqual([]);
   });
 
@@ -127,5 +131,18 @@ describe('store', () => {
       }),
     ).toBe(999);
     expect(store.getState()).toEqual(999);
+  });
+
+  test('useStore must work for this store', () => {
+    const { getState, useStore } = createStore('store3', 87);
+    renderHook(() => useStore());
+
+    const { result } = renderHook(() => useStore());
+    const [state, setState] = result.current;
+    expect(state).toEqual(87);
+    act(() => {
+      setState(56);
+    });
+    expect(getState()).toEqual(56);
   });
 });

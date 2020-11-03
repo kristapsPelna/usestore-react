@@ -95,9 +95,9 @@ import React from 'react';
 import { createStore, useStore } from 'usestore-react';
 
 // The return can be used as an object
-const clickCount = createStore('clickCount', 0);
+const clickCountStore = createStore('clickCount', 0);
 // counter will start at 2
-clickCount.setState(2);
+clickCountStore.setState(2);
 
 // Or it can be used as an array
 const [getName, setName] = createStore('name', 'John Doe');
@@ -106,7 +106,11 @@ const [getName, setName] = createStore('name', 'John Doe');
 setName('Jane Doe');
 
 const StatefullHello = () => {
+  // You can get the store hook by its name
   const [clickCount, setClickCount] = useStore('clickCount');
+  // or from its store
+  const [clickCount, setClickCount] = clickCountStore.useStore();
+
   const [name] = useStore('name');
 
   return (
