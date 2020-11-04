@@ -1,3 +1,12 @@
+# [1.6.0](https://github.com/kristapsPelna/usestore-react/compare/v1.5.0...v1.6.0) (2020-11-04)
+
+
+### Features
+
+* add a third return (scoped useStore) from createStore ([40774c9](https://github.com/kristapsPelna/usestore-react/commit/40774c97be1b81dfc43596cf6775d7882f34284f))
+
+
+
 # [1.5.0](https://github.com/kristapsPelna/usestore-react/compare/v1.4.0...v1.5.0) (2020-11-03)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * use useLayoutEffect instead of useEffect to have the subscribe happen immediately instead of asynchronously ([e601034](https://github.com/kristapsPelna/usestore-react/commit/e601034ff8068007915cf9fb492b49dd937401e4))
-
-
-
-# [1.2.0](https://github.com/kristapsPelna/usestore-react/compare/v1.1.0...v1.2.0) (2020-10-21)
-
-
-### Features
-
-* return store.state directly instead of the useState value to always return the latest value without a delay (can happen in rare cases) ([c372d0b](https://github.com/kristapsPelna/usestore-react/commit/c372d0b9251519d234852dec665acb1b92db5a16))
 
 
 
