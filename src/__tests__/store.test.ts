@@ -14,9 +14,10 @@ afterEach(() => {
 
 describe('createStore', () => {
   it('should create a store and return an array for destructuring', () => {
-    const [getState, setState] = createStore('store1', 0);
+    const [getState, setState, useStore] = createStore('store1', 0);
     expect(getState()).toBe(0);
     expect(typeof setState).toBe('function');
+    expect(typeof useStore).toBe('function');
   });
 
   it('should create a store and return its public interface', () => {

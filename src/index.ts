@@ -41,7 +41,7 @@ export const createStore = <TState>(name: string, defaultState: TState) => {
     useStore: () => useStore(name),
   };
   stores[name] = store;
-  const returnValue: any = [store.getState, store.setState];
+  const returnValue: any = [store.getState, store.setState, store.useStore];
   returnValue.name = name;
   returnValue.getState = store.getState;
   returnValue.setState = store.setState;

@@ -100,7 +100,7 @@ const clickCountStore = createStore('clickCount', 0);
 clickCountStore.setState(2);
 
 // Or it can be used as an array
-const [getName, setName] = createStore('name', 'John Doe');
+const [getName, setName, useName] = createStore('name', 'John Doe');
 
 // name will start with 'Jane Doe'
 setName('Jane Doe');
@@ -112,6 +112,8 @@ const StatefullHello = () => {
   const [clickCount, setClickCount] = clickCountStore.useStore();
 
   const [name] = useStore('name');
+  // or like this
+  const [name] = useName();
 
   return (
     <div>
