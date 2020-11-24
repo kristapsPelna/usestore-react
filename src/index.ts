@@ -1,15 +1,30 @@
-import { useState, useLayoutEffect } from 'react';
+import { useState, useLayoutEffect, SetStateAction } from 'react';
 
 const stores: Record<string, InternalStore<any>> = {};
 
-type StateUpdateFn<TState> = (prevState: TState) => TState;
-type SetState<TState> = (state: TState | StateUpdateFn<TState>) => void;
+type SetState<TState> = (state: SetStateAction<TState>) => void;
 
 export type Store<TState> = {
+  /**
+   * Unique name of the store
+   */
   readonly name: string;
+  /**
+   * Get the current value of the state
+   */
   getState: () => TState;
+  /**
+   * Set the state of the store
+   */
   setState: SetState<TState>;
+  /**
+   * useStore that is scoped to this specific store
+   */
   useStore: () => [TState, SetState<TState>];
+  /**
+   * Resets the store to its defaultState
+   */
+  reset: () => void;
 };
 
 export type InternalStore<TState> = Store<TState> & {
@@ -29,16 +44,17 @@ export const createStore = <TState>(name: string, defaultState: TState) => {
     state: defaultState,
     setters: [],
     getState: () => store.state,
-    setState: (newStateOrUpdateFn: TState | StateUpdateFn<TState>) => {
+    setState: (setStateAction: SetStateAction<TState>) => {
       store.state =
-        typeof newStateOrUpdateFn === 'function'
-          ? (newStateOrUpdateFn as StateUpdateFn<TState>)(store.state)
-          : newStateOrUpdateFn;
+        typeof setStateAction === 'function'
+          ? (setStateAction as (prevState: TState) => TState)(store.state)
+          : setStateAction;
 
       store.setters.forEach((setter) => setter(store.state));
       return store.state;
     },
     useStore: () => useStore(name),
+    reset: () => store.setState(defaultState),
   };
   stores[name] = store;
   const returnValue: any = [store.getState, store.setState, store.useStore];
@@ -46,6 +62,7 @@ export const createStore = <TState>(name: string, defaultState: TState) => {
   returnValue.getState = store.getState;
   returnValue.setState = store.setState;
   returnValue.useStore = store.useStore;
+  returnValue.reset = store.reset;
   return returnValue as [Store<TState>['getState'], Store<TState>['setState']] &
     Store<TState>;
 };

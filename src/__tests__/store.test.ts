@@ -26,6 +26,7 @@ describe('createStore', () => {
     expect(store.getState()).toBe(0);
     expect(typeof store.setState).toBe('function');
     expect(typeof store.useStore).toBe('function');
+    expect(typeof store.reset).toBe('function');
   });
 
   it('should warn about overriding an existing store', () => {
@@ -53,6 +54,7 @@ describe('getStore', () => {
       'getState',
       'setState',
       'useStore',
+      'reset',
     ]);
     expect(store.name).toBe('test');
     expect(store.state).toEqual(defaultValue);
@@ -145,5 +147,14 @@ describe('store', () => {
       setState(56);
     });
     expect(getState()).toEqual(56);
+  });
+
+  test('reset must reset the state to the defaultValue', () => {
+    const store = createStore('store3', 'default');
+    expect(store.getState()).toBe('default');
+    store.setState('not-default');
+    expect(store.getState()).toBe('not-default');
+    expect(store.reset()).toBe('default');
+    expect(store.getState()).toEqual('default');
   });
 });
