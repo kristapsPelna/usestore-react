@@ -1,3 +1,12 @@
+# [1.7.0](https://github.com/kristapsPelna/usestore-react/compare/v1.6.0...v1.7.0) (2020-11-24)
+
+
+### Features
+
+* add react 17+ support and add store reset function ([c3b8a93](https://github.com/kristapsPelna/usestore-react/commit/c3b8a931291a49c611bb249f6e63a2c5942e22b0))
+
+
+
 # [1.6.0](https://github.com/kristapsPelna/usestore-react/compare/v1.5.0...v1.6.0) (2020-11-04)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add support for an update function for setState and remove callback ([553194e](https://github.com/kristapsPelna/usestore-react/commit/553194e23f2ab9c46d9b95c6c3286ae89356c8b0))
-
-
-
-## [1.2.1](https://github.com/kristapsPelna/usestore-react/compare/v1.2.0...v1.2.1) (2020-10-22)
-
-
-### Bug Fixes
-
-* use useLayoutEffect instead of useEffect to have the subscribe happen immediately instead of asynchronously ([e601034](https://github.com/kristapsPelna/usestore-react/commit/e601034ff8068007915cf9fb492b49dd937401e4))
 
 
 
