@@ -3,6 +3,7 @@ import { useState, useLayoutEffect, SetStateAction } from 'react';
 const stores: Record<string, InternalStore<any>> = {};
 
 type SetState<TState> = (state: SetStateAction<TState>) => void;
+type Writeable<T> = { -readonly [P in keyof T]: T[P] };
 
 export type Store<TState> = {
   /**
@@ -12,19 +13,19 @@ export type Store<TState> = {
   /**
    * Get the current value of the state
    */
-  getState: () => TState;
+  readonly getState: () => TState;
   /**
    * Set the state of the store
    */
-  setState: SetState<TState>;
+  readonly setState: SetState<TState>;
   /**
    * useStore that is scoped to this specific store
    */
-  useStore: () => [TState, SetState<TState>];
+  readonly useStore: () => [TState, SetState<TState>];
   /**
    * Resets the store to its defaultState
    */
-  reset: () => void;
+  readonly reset: () => void;
 };
 
 export type InternalStore<TState> = Store<TState> & {
@@ -57,14 +58,20 @@ export const createStore = <TState>(name: string, defaultState: TState) => {
     reset: () => store.setState(defaultState),
   };
   stores[name] = store;
-  const returnValue: any = [store.getState, store.setState, store.useStore];
+
+  const returnValue = [store.getState, store.setState, store.useStore] as [
+    Store<TState>['getState'],
+    Store<TState>['setState'],
+    Store<TState>['useStore'],
+  ] &
+    Writeable<Store<TState>>;
+
   returnValue.name = name;
   returnValue.getState = store.getState;
   returnValue.setState = store.setState;
   returnValue.useStore = store.useStore;
   returnValue.reset = store.reset;
-  return returnValue as [Store<TState>['getState'], Store<TState>['setState']] &
-    Store<TState>;
+  return returnValue as Readonly<typeof returnValue>;
 };
 
 export const getStore = <TState>(name: string): InternalStore<TState> => {
