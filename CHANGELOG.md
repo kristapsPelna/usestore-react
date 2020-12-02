@@ -1,3 +1,12 @@
+## [1.7.2](https://github.com/kristapsPelna/usestore-react/compare/v1.7.1...v1.7.2) (2020-12-02)
+
+
+### Bug Fixes
+
+* fix useStore now correctly resubscribes to the new store if store name prop changes ([0a47970](https://github.com/kristapsPelna/usestore-react/commit/0a47970fe800d475c2e4330b14f639c32b7b4fbb))
+
+
+
 ## [1.7.1](https://github.com/kristapsPelna/usestore-react/compare/v1.7.0...v1.7.1) (2020-12-01)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add a scoped useStore ([8498294](https://github.com/kristapsPelna/usestore-react/commit/8498294032115e35bef160f976016337981a2299))
-
-
-
-# [1.4.0](https://github.com/kristapsPelna/usestore-react/compare/v1.3.0...v1.4.0) (2020-11-03)
-
-
-### Features
-
-* add createStore array return as well as an object return ([a5c5828](https://github.com/kristapsPelna/usestore-react/commit/a5c5828bc0ad92668b3c2e5f61661cf302042642))
 
 
 
