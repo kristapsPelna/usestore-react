@@ -105,4 +105,38 @@ describe('useStore', () => {
 
     expect(store.setters.length).toBe(0);
   });
+
+  test.only('should resubscribe on store name change', () => {
+    const firstStore = createStore('first', 15);
+    const secondStore = createStore('second', 'works');
+
+    const { result, rerender } = renderHook((name: string = firstStore.name) =>
+      useStore(name),
+    );
+
+    let [state] = result.current;
+
+    expect(state).toBe(15);
+
+    rerender(secondStore.name);
+
+    [state] = result.current;
+    expect(state).toBe('works');
+
+    act(() => {
+      firstStore.setState(99);
+    });
+
+    rerender();
+    [state] = result.current;
+    expect(state).toBe('works');
+
+    act(() => {
+      secondStore.setState('still works');
+    });
+
+    rerender();
+    [state] = result.current;
+    expect(state).toBe('still works');
+  });
 });

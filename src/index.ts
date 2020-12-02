@@ -36,7 +36,7 @@ export type InternalStore<TState> = Store<TState> & {
 export const createStore = <TState>(name: string, defaultState: TState) => {
   if (stores[name]) {
     console.warn(
-      `[usestore-react] Store with name ${name} already exists. Overriding`,
+      `[usestore-react] Store with name '${name}' already exists. Overriding`,
     );
   }
 
@@ -59,19 +59,24 @@ export const createStore = <TState>(name: string, defaultState: TState) => {
   };
   stores[name] = store;
 
-  const returnValue = [store.getState, store.setState, store.useStore] as [
+  type ReturnArray = [
     Store<TState>['getState'],
     Store<TState>['setState'],
     Store<TState>['useStore'],
-  ] &
-    Writeable<Store<TState>>;
+  ];
+
+  const returnValue = [
+    store.getState,
+    store.setState,
+    store.useStore,
+  ] as ReturnArray & Writeable<Store<TState>>;
 
   returnValue.name = name;
   returnValue.getState = store.getState;
   returnValue.setState = store.setState;
   returnValue.useStore = store.useStore;
   returnValue.reset = store.reset;
-  return returnValue as Readonly<typeof returnValue>;
+  return returnValue as ReturnArray & Store<TState>;
 };
 
 export const getStore = <TState>(name: string): InternalStore<TState> => {
@@ -102,7 +107,7 @@ export const useStore = <TState>(name: string): [TState, SetState<TState>] => {
     return () => {
       store.setters = store.setters.filter((setter) => setter !== setState);
     };
-  }, []);
+  }, [name]);
 
   return [store.state, store.setState];
 };

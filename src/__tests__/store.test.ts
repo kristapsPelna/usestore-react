@@ -36,7 +36,7 @@ describe('createStore', () => {
     expect(store).toBeTruthy();
     createStore(name, undefined);
     expect(warn).toHaveBeenCalledWith(
-      `[usestore-react] Store with name ${name} already exists. Overriding`,
+      `[usestore-react] Store with name '${name}' already exists. Overriding`,
     );
   });
 });
