@@ -49,6 +49,7 @@ describe('getStore', () => {
     const store = getStore('test');
     expect(Object.keys(store)).toEqual([
       'name',
+      'defaultState',
       'state',
       'setters',
       'getState',

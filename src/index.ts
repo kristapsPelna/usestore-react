@@ -11,6 +11,10 @@ export type Store<TState> = {
    */
   readonly name: string;
   /**
+   * Default state value
+   */
+  readonly defaultState: TState;
+  /**
    * Get the current value of the state
    */
   readonly getState: () => TState;
@@ -42,6 +46,7 @@ export const createStore = <TState>(name: string, defaultState: TState) => {
 
   const store: InternalStore<TState> = {
     name,
+    defaultState,
     state: defaultState,
     setters: [],
     getState: () => store.state,
