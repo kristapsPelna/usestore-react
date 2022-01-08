@@ -1,3 +1,12 @@
+# [1.8.0](https://github.com/kristapsPelna/usestore-react/compare/v1.7.2...v1.8.0) (2022-01-08)
+
+
+### Features
+
+* update dependencies and expose defaultState from the store object for easier testing ([6b606a2](https://github.com/kristapsPelna/usestore-react/commit/6b606a272b3a781584624532af446820e1af6dbd))
+
+
+
 ## [1.7.2](https://github.com/kristapsPelna/usestore-react/compare/v1.7.1...v1.7.2) (2020-12-02)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add a third return (scoped useStore) from createStore ([40774c9](https://github.com/kristapsPelna/usestore-react/commit/40774c97be1b81dfc43596cf6775d7882f34284f))
-
-
-
-# [1.5.0](https://github.com/kristapsPelna/usestore-react/compare/v1.4.0...v1.5.0) (2020-11-03)
-
-
-### Features
-
-* add a scoped useStore ([8498294](https://github.com/kristapsPelna/usestore-react/commit/8498294032115e35bef160f976016337981a2299))
 
 
 
