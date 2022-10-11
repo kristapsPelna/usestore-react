@@ -1,3 +1,12 @@
+# [1.9.0](https://github.com/kristapsPelna/usestore-react/compare/v1.8.0...v1.9.0) (2022-10-11)
+
+
+### Features
+
+* update dependencies and provide a new useSelector function ([eb14a1f](https://github.com/kristapsPelna/usestore-react/commit/eb14a1fb5ef392ee2f532853b70db8e882c118ef))
+
+
+
 # [1.8.0](https://github.com/kristapsPelna/usestore-react/compare/v1.7.2...v1.8.0) (2022-01-08)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add react 17+ support and add store reset function ([c3b8a93](https://github.com/kristapsPelna/usestore-react/commit/c3b8a931291a49c611bb249f6e63a2c5942e22b0))
-
-
-
-# [1.6.0](https://github.com/kristapsPelna/usestore-react/compare/v1.5.0...v1.6.0) (2020-11-04)
-
-
-### Features
-
-* add a third return (scoped useStore) from createStore ([40774c9](https://github.com/kristapsPelna/usestore-react/commit/40774c97be1b81dfc43596cf6775d7882f34284f))
 
 
 
