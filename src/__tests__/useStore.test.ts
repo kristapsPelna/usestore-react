@@ -1,13 +1,14 @@
 import { createStore, useStore, deleteAllStores, getStore } from '..';
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react';
 
-afterEach(() => {
-  deleteAllStores();
-});
+const debug = jest.fn();
+console.debug = debug;
+afterEach(debug.mockClear);
+
+afterEach(deleteAllStores);
 
 describe('useStore', () => {
   it('should add a debug message when the store didnt exist and was created', () => {
-    const debug = jest.spyOn(global.console, 'debug');
     const name = 'test';
 
     renderHook(() => useStore(name));
@@ -106,7 +107,7 @@ describe('useStore', () => {
     expect(store.setters.length).toBe(0);
   });
 
-  test.only('should resubscribe on store name change', () => {
+  test('should resubscribe on store name change', () => {
     const firstStore = createStore('first', 15);
     const secondStore = createStore('second', 'works');
 
@@ -127,7 +128,7 @@ describe('useStore', () => {
       firstStore.setState(99);
     });
 
-    rerender();
+    rerender(secondStore.name);
     [state] = result.current;
     expect(state).toBe('works');
 
@@ -135,7 +136,7 @@ describe('useStore', () => {
       secondStore.setState('still works');
     });
 
-    rerender();
+    rerender(secondStore.name);
     [state] = result.current;
     expect(state).toBe('still works');
   });

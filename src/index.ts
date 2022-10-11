@@ -1,4 +1,5 @@
 import { useState, useLayoutEffect, SetStateAction } from 'react';
+import equal from 'fast-deep-equal';
 
 const stores: Record<string, InternalStore<any>> = {};
 
@@ -26,6 +27,8 @@ export type Store<TState> = {
    * useStore that is scoped to this specific store
    */
   readonly useStore: () => [TState, SetState<TState>];
+
+  readonly useSelector: <TValue>(selector: (state: TState) => TValue) => TValue;
   /**
    * Resets the store to its defaultState
    */
@@ -35,6 +38,8 @@ export type Store<TState> = {
 export type InternalStore<TState> = Store<TState> & {
   state: TState;
   setters: SetState<TState>[];
+  subscribe: (listener: (state: TState) => void) => void;
+  unsubscribe: (listener: (state: TState) => void) => void;
 };
 
 export const createStore = <TState>(name: string, defaultState: TState) => {
@@ -60,6 +65,13 @@ export const createStore = <TState>(name: string, defaultState: TState) => {
       return store.state;
     },
     useStore: () => useStore(name),
+    useSelector: <TValue>(selector: (state: TState) => TValue) =>
+      useSelector(name, selector),
+    subscribe: (listener: (state: TState) => void) =>
+      store.setters.unshift(listener),
+    unsubscribe: (listener: (state: TState) => void) => {
+      store.setters = store.setters.filter((setter) => setter !== listener);
+    },
     reset: () => store.setState(defaultState),
   };
   stores[name] = store;
@@ -80,6 +92,7 @@ export const createStore = <TState>(name: string, defaultState: TState) => {
   returnValue.getState = store.getState;
   returnValue.setState = store.setState;
   returnValue.useStore = store.useStore;
+  returnValue.useSelector = store.useSelector;
   returnValue.reset = store.reset;
   return returnValue as ReturnArray & Store<TState>;
 };
@@ -108,11 +121,30 @@ export const useStore = <TState>(name: string): [TState, SetState<TState>] => {
   const [, setState] = useState(store.state);
 
   useLayoutEffect(() => {
-    store.setters.unshift(setState);
-    return () => {
-      store.setters = store.setters.filter((setter) => setter !== setState);
-    };
+    store.subscribe(setState);
+    return () => store.unsubscribe(setState);
   }, [name]);
 
   return [store.state, store.setState];
+};
+
+export const useSelector = <TState, TValue>(
+  name: string,
+  selectorFn: (state: TState) => TValue,
+) => {
+  const store = getStore<TState>(name);
+  const [value, setValue] = useState(selectorFn(store.state));
+
+  useLayoutEffect(() => {
+    const selector = (state: TState) =>
+      setValue((value) => {
+        const newValue = selectorFn(state);
+        return equal(value, newValue) ? value : newValue;
+      });
+
+    store.subscribe(selector);
+    return () => store.unsubscribe(selector);
+  }, [name]);
+
+  return value;
 };

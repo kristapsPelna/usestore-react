@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react';
 import {
   createStore,
   getStore,
@@ -7,10 +7,15 @@ import {
   deleteAllStores,
 } from '..';
 
-jest.mock('');
-afterEach(() => {
-  deleteAllStores();
-});
+const warn = jest.fn();
+console.warn = warn;
+afterEach(warn.mockClear);
+
+const debug = jest.fn();
+console.debug = debug;
+afterEach(debug.mockClear);
+
+afterEach(deleteAllStores);
 
 describe('createStore', () => {
   it('should create a store and return an array for destructuring', () => {
@@ -26,11 +31,11 @@ describe('createStore', () => {
     expect(store.getState()).toBe(0);
     expect(typeof store.setState).toBe('function');
     expect(typeof store.useStore).toBe('function');
+    expect(typeof store.useSelector).toEqual('function');
     expect(typeof store.reset).toBe('function');
   });
 
   it('should warn about overriding an existing store', () => {
-    const warn = jest.spyOn(global.console, 'warn');
     const name = 'unique';
     const store = createStore(name, 0);
     expect(store).toBeTruthy();
@@ -55,6 +60,9 @@ describe('getStore', () => {
       'getState',
       'setState',
       'useStore',
+      'useSelector',
+      'subscribe',
+      'unsubscribe',
       'reset',
     ]);
     expect(store.name).toBe('test');
@@ -67,7 +75,6 @@ describe('getStore', () => {
 
   it('should return a new store if it does not exist', () => {
     const name = 'Non-existent store';
-    const debug = jest.spyOn(global.console, 'debug');
     const store = getStore(name);
     expect(store.name).toEqual(name);
     expect(debug).toBeCalledWith(
@@ -150,12 +157,46 @@ describe('store', () => {
     expect(getState()).toEqual(56);
   });
 
-  test('reset must reset the state to the defaultValue', () => {
-    const store = createStore('store3', 'default');
-    expect(store.getState()).toBe('default');
-    store.setState('not-default');
-    expect(store.getState()).toBe('not-default');
-    expect(store.reset()).toBe('default');
-    expect(store.getState()).toEqual('default');
+  test('should select a nested value with a selector', () => {
+    type State = { level1: { value: number } };
+    const selector = (state: State) => state.level1.value;
+    const { useSelector } = createStore('store3', {
+      level1: { value: 123 },
+    });
+
+    const { result } = renderHook(() => useSelector(selector));
+    expect(result.current).toEqual(123);
+  });
+
+  test('should get latest selector value after store change', () => {
+    type State = { level1: { value: number } };
+    const selector = (state: State) => state.level1.value;
+    const { useSelector, setState } = createStore('store3', {
+      level1: { value: 123 },
+    });
+
+    const { result, rerender } = renderHook(() => useSelector(selector));
+
+    act(() => {
+      setState({ level1: { value: 456 } });
+    });
+    rerender();
+
+    act(() => {
+      // Nothing should change when setting the same value again
+      setState({ level1: { value: 456 } });
+    });
+    rerender();
+
+    expect(result.current).toEqual(456);
+  });
+
+  it('should reset value on reset', () => {
+    const { getState, setState, reset } = createStore('store', 'default');
+
+    setState('changed');
+    expect(getState()).toEqual('changed');
+    reset();
+    expect(getState()).toEqual('default');
   });
 });
