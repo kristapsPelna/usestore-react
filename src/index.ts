@@ -29,7 +29,10 @@ export type Store<TState> = {
   /**
    * useSelector that is scoped to this specific store
    */
-  readonly useSelector: <TValue>(selector: (state: TState) => TValue) => TValue;
+  readonly useSelector: <TValue>(
+    selector: (state: TState) => TValue,
+    equalityFunction?: (value: TValue, newValue: TValue) => boolean,
+  ) => TValue;
   /**
    * Resets the store to its defaultState
    */
