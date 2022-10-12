@@ -1,3 +1,12 @@
+## [1.9.2](https://github.com/kristapsPelna/usestore-react/compare/v1.9.1...v1.9.2) (2022-10-12)
+
+
+### Bug Fixes
+
+* update peerdependecy syntax ([4d32559](https://github.com/kristapsPelna/usestore-react/commit/4d32559bc2fad75b0751483c112031e80e9f1516))
+
+
+
 ## [1.9.1](https://github.com/kristapsPelna/usestore-react/compare/v1.9.0...v1.9.1) (2022-10-12)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * fix useStore now correctly resubscribes to the new store if store name prop changes ([0a47970](https://github.com/kristapsPelna/usestore-react/commit/0a47970fe800d475c2e4330b14f639c32b7b4fbb))
-
-
-
-## [1.7.1](https://github.com/kristapsPelna/usestore-react/compare/v1.7.0...v1.7.1) (2020-12-01)
-
-
-### Bug Fixes
-
-* update types ([5377a63](https://github.com/kristapsPelna/usestore-react/commit/5377a63a0053e948f6fc14fdb454b09edefcdec4))
 
 
 
