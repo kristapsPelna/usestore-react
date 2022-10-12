@@ -1,3 +1,12 @@
+## [1.9.3](https://github.com/kristapsPelna/usestore-react/compare/v1.9.2...v1.9.3) (2022-10-12)
+
+
+### Bug Fixes
+
+* fix useSelector types ([d4376c6](https://github.com/kristapsPelna/usestore-react/commit/d4376c6fb5d54e82456988931e018f044852a2d2))
+
+
+
 ## [1.9.2](https://github.com/kristapsPelna/usestore-react/compare/v1.9.1...v1.9.2) (2022-10-12)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * update dependencies and expose defaultState from the store object for easier testing ([6b606a2](https://github.com/kristapsPelna/usestore-react/commit/6b606a272b3a781584624532af446820e1af6dbd))
-
-
-
-## [1.7.2](https://github.com/kristapsPelna/usestore-react/compare/v1.7.1...v1.7.2) (2020-12-02)
-
-
-### Bug Fixes
-
-* fix useStore now correctly resubscribes to the new store if store name prop changes ([0a47970](https://github.com/kristapsPelna/usestore-react/commit/0a47970fe800d475c2e4330b14f639c32b7b4fbb))
 
 
 
