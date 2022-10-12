@@ -26,7 +26,9 @@ export type Store<TState> = {
    * useStore that is scoped to this specific store
    */
   readonly useStore: () => [TState, SetState<TState>];
-
+  /**
+   * useSelector that is scoped to this specific store
+   */
   readonly useSelector: <TValue>(selector: (state: TState) => TValue) => TValue;
   /**
    * Resets the store to its defaultState
