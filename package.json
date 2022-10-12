@@ -1,6 +1,6 @@
 {
   "name": "usestore-react",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "A simple state management library for React using hooks",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

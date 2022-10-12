@@ -1,3 +1,12 @@
+## [1.9.1](https://github.com/kristapsPelna/usestore-react/compare/v1.9.0...v1.9.1) (2022-10-12)
+
+
+### Bug Fixes
+
+* add documentation ([7cb3bb0](https://github.com/kristapsPelna/usestore-react/commit/7cb3bb04b025c3641ab9c8b25b23000ac413925d))
+
+
+
 # [1.9.0](https://github.com/kristapsPelna/usestore-react/compare/v1.8.0...v1.9.0) (2022-10-11)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * update types ([5377a63](https://github.com/kristapsPelna/usestore-react/commit/5377a63a0053e948f6fc14fdb454b09edefcdec4))
-
-
-
-# [1.7.0](https://github.com/kristapsPelna/usestore-react/compare/v1.6.0...v1.7.0) (2020-11-24)
-
-
-### Features
-
-* add react 17+ support and add store reset function ([c3b8a93](https://github.com/kristapsPelna/usestore-react/commit/c3b8a931291a49c611bb249f6e63a2c5942e22b0))
 
 
 
