@@ -1,5 +1,4 @@
 import { useState, useLayoutEffect, SetStateAction } from 'react';
-import equal from 'fast-deep-equal';
 
 const stores: Record<string, InternalStore<any>> = {};
 
@@ -131,6 +130,8 @@ export const useStore = <TState>(name: string): [TState, SetState<TState>] => {
 export const useSelector = <TState, TValue>(
   name: string,
   selectorFn: (state: TState) => TValue,
+  equalityFunction: (value: TValue, newValue: TValue) => boolean = (a, b) =>
+    JSON.stringify(a) === JSON.stringify(b),
 ) => {
   const store = getStore<TState>(name);
   const [value, setValue] = useState(selectorFn(store.state));
@@ -139,12 +140,12 @@ export const useSelector = <TState, TValue>(
     const selector = (state: TState) =>
       setValue((value) => {
         const newValue = selectorFn(state);
-        return equal(value, newValue) ? value : newValue;
+        return equalityFunction(value, newValue) ? value : newValue;
       });
 
     store.subscribe(selector);
     return () => store.unsubscribe(selector);
-  }, [name]);
+  }, [name, selectorFn]);
 
   return value;
 };

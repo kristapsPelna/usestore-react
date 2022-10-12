@@ -34,9 +34,6 @@
   ],
   "author": "kristaps.pelna.com",
   "license": "MIT",
-  "dependencies": {
-    "fast-deep-equal": ">= 3.x"
-  },
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/preset-env": "^7.19.4",
